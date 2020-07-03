@@ -23,7 +23,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
-              "src/thingsboard.ico",
+              "src/griot.ico",
               "src/assets",
               { "glob": "worker-html.js", "input": "./node_modules/ace-builds/src-min/", "output": "/" },
               { "glob": "worker-css.js", "input": "./node_modules/ace-builds/src-min/", "output": "/" },
@@ -196,5 +196,8 @@
       }
     }
   },
-  "defaultProject": "thingsboard"
+  "defaultProject": "thingsboard",
+  "cli": {
+    "analytics": "78bd122f-44e2-4e05-b1c0-add56ae544a5"
+  }
 }

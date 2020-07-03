@@ -14,32 +14,46 @@
 /// limitations under the License.
 ///
 
-import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
-import { fromEvent, Observable } from 'rxjs';
-import { select, Store } from '@ngrx/store';
-import { debounceTime, distinctUntilChanged, map, tap } from 'rxjs/operators';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Inject,
+  OnInit,
+  ViewChild,
+} from "@angular/core";
+import { fromEvent, Observable } from "rxjs";
+import { select, Store } from "@ngrx/store";
+import { debounceTime, distinctUntilChanged, map, tap } from "rxjs/operators";
 
-import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { User } from '@shared/models/user.model';
-import { PageComponent } from '@shared/components/page.component';
-import { AppState } from '@core/core.state';
-import { getCurrentAuthState, selectAuthUser, selectUserDetails } from '@core/auth/auth.selectors';
-import { MediaBreakpoints } from '@shared/models/constants';
-import * as _screenfull from 'screenfull';
-import { MatSidenav } from '@angular/material/sidenav';
-import { AuthState } from '@core/auth/auth.models';
-import { WINDOW } from '@core/services/window.service';
-import { instanceOfSearchableComponent, ISearchableComponent } from '@home/models/searchable-component.models';
+import { BreakpointObserver, BreakpointState } from "@angular/cdk/layout";
+import { User } from "@shared/models/user.model";
+import { PageComponent } from "@shared/components/page.component";
+import { AppState } from "@core/core.state";
+import {
+  getCurrentAuthState,
+  selectAuthUser,
+  selectUserDetails,
+} from "@core/auth/auth.selectors";
+import { MediaBreakpoints } from "@shared/models/constants";
+import * as _screenfull from "screenfull";
+import { MatSidenav } from "@angular/material/sidenav";
+import { AuthState } from "@core/auth/auth.models";
+import { WINDOW } from "@core/services/window.service";
+import {
+  instanceOfSearchableComponent,
+  ISearchableComponent,
+} from "@home/models/searchable-component.models";
 
 const screenfull = _screenfull as _screenfull.Screenfull;
 
 @Component({
-  selector: 'tb-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: "tb-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.scss"],
 })
-export class HomeComponent extends PageComponent implements AfterViewInit, OnInit {
-
+export class HomeComponent extends PageComponent
+  implements AfterViewInit, OnInit {
   authState: AuthState = getCurrentAuthState(this.store);
 
   forceFullscreen = this.authState.forceFullscreen;
@@ -47,15 +61,15 @@ export class HomeComponent extends PageComponent implements AfterViewInit, OnIni
   activeComponent: any;
   searchableComponent: ISearchableComponent;
 
-  sidenavMode: 'over' | 'push' | 'side' = 'side';
+  sidenavMode: "over" | "push" | "side" = "side";
   sidenavOpened = true;
 
-  logo = require('../../../assets/logo_title_white.svg').default;
+  logo = require("../../../assets/griot_logo_rev2.svg").default;
 
-  @ViewChild('sidenav')
+  @ViewChild("sidenav")
   sidenav: MatSidenav;
 
-  @ViewChild('searchInput') searchInputField: ElementRef;
+  @ViewChild("searchInput") searchInputField: ElementRef;
 
   fullscreenEnabled = screenfull.isEnabled;
 
@@ -65,42 +79,44 @@ export class HomeComponent extends PageComponent implements AfterViewInit, OnIni
 
   searchEnabled = false;
   showSearch = false;
-  searchText = '';
+  searchText = "";
 
-  constructor(protected store: Store<AppState>,
-              @Inject(WINDOW) private window: Window,
-              public breakpointObserver: BreakpointObserver) {
+  constructor(
+    protected store: Store<AppState>,
+    @Inject(WINDOW) private window: Window,
+    public breakpointObserver: BreakpointObserver
+  ) {
     super(store);
   }
 
   ngOnInit() {
-
     this.authUser$ = this.store.pipe(select(selectAuthUser));
     this.userDetails$ = this.store.pipe(select(selectUserDetails));
-    this.userDetailsString = this.userDetails$.pipe(map((user: User) => {
-      return JSON.stringify(user);
-    }));
+    this.userDetailsString = this.userDetails$.pipe(
+      map((user: User) => {
+        return JSON.stringify(user);
+      })
+    );
 
-    const isGtSm = this.breakpointObserver.isMatched(MediaBreakpoints['gt-sm']);
-    this.sidenavMode = isGtSm ? 'side' : 'over';
+    const isGtSm = this.breakpointObserver.isMatched(MediaBreakpoints["gt-sm"]);
+    this.sidenavMode = isGtSm ? "side" : "over";
     this.sidenavOpened = isGtSm;
 
     this.breakpointObserver
-      .observe(MediaBreakpoints['gt-sm'])
+      .observe(MediaBreakpoints["gt-sm"])
       .subscribe((state: BreakpointState) => {
-          if (state.matches) {
-            this.sidenavMode = 'side';
-            this.sidenavOpened = true;
-          } else {
-            this.sidenavMode = 'over';
-            this.sidenavOpened = false;
-          }
+        if (state.matches) {
+          this.sidenavMode = "side";
+          this.sidenavOpened = true;
+        } else {
+          this.sidenavMode = "over";
+          this.sidenavOpened = false;
         }
-      );
+      });
   }
 
   ngAfterViewInit() {
-    fromEvent(this.searchInputField.nativeElement, 'keyup')
+    fromEvent(this.searchInputField.nativeElement, "keyup")
       .pipe(
         debounceTime(150),
         distinctUntilChanged(),
@@ -112,7 +128,7 @@ export class HomeComponent extends PageComponent implements AfterViewInit, OnIni
   }
 
   sidenavClicked() {
-    if (this.sidenavMode === 'over') {
+    if (this.sidenavMode === "over") {
       this.sidenav.toggle();
     }
   }
@@ -133,9 +149,12 @@ export class HomeComponent extends PageComponent implements AfterViewInit, OnIni
 
   activeComponentChanged(activeComponent: any) {
     this.showSearch = false;
-    this.searchText = '';
+    this.searchText = "";
     this.activeComponent = activeComponent;
-    if (this.activeComponent && instanceOfSearchableComponent(this.activeComponent)) {
+    if (
+      this.activeComponent &&
+      instanceOfSearchableComponent(this.activeComponent)
+    ) {
       this.searchEnabled = true;
       this.searchableComponent = this.activeComponent;
     } else {
@@ -162,7 +181,7 @@ export class HomeComponent extends PageComponent implements AfterViewInit, OnIni
     if (this.searchEnabled) {
       this.showSearch = false;
       if (this.searchText.length) {
-        this.searchText = '';
+        this.searchText = "";
         this.searchTextUpdated();
       }
     }

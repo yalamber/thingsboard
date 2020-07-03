@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@import '../../../../scss/constants';
+@import "../../../../scss/constants";
 
 :host {
   width: 100%;
@@ -21,7 +21,10 @@
   display: flex;
   flex-direction: column;
   .mat-toolbar.details-toolbar {
-    padding: 0;
+    padding: 15px 0;
+    .mat-toolbar-tools {
+      align-items: flex-start !important;
+    }
   }
 }
 
@@ -36,27 +39,37 @@
   }
   .tb-details-title {
     width: inherit;
-    margin: 20px 8px 0 0;
+    margin: 20px 8px 5px 0;
     overflow: hidden;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 400;
     text-overflow: ellipsis;
     text-transform: uppercase;
     white-space: nowrap;
+    font-weight: 500;
 
     @media #{$mat-gt-sm} {
-      font-size: 1.5rem;
+      font-size: 1.1rem;
     }
   }
 
   .tb-details-subtitle {
     width: inherit;
-    margin: 10px 0;
+    margin: 0 0 10px;
     overflow: hidden;
     font-size: 1rem;
     text-overflow: ellipsis;
     white-space: nowrap;
-    opacity: .8;
+    opacity: 0.8;
+  }
+
+  .tb-btn-header {
+    width: 40px !important;
+    height: 40px !important;
+    bottom: 45px !important;
+    .mat-button-wrapper {
+      padding: 7px 0;
+    }
   }
 
   tb-dashboard {

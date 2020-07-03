@@ -13,12 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@import '../../../../../scss/constants';
+@import "../../../../../scss/constants";
 
 :host ::ng-deep {
   .tb-home-links {
     .mat-headline {
-      font-size: 20px;
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.85);
+      text-transform: uppercase;
+      font-weight: 500;
       @media #{$mat-gt-xmd} {
         font-size: 24px;
       }
@@ -26,15 +29,17 @@
     mat-card {
       padding: 0;
       margin: 8px;
+      color: rgba(255, 255, 255, 0.65);
+      text-align: center;
       mat-card-title {
         margin: 0;
         padding: 24px 16px 16px;
       }
-      mat-card-title+mat-card-content {
+      mat-card-title + mat-card-content {
         padding-top: 0;
       }
       mat-card-content {
-        padding: 16px;
+        padding: 16px 16px 0;
       }
     }
     .tb-card-button {
@@ -42,8 +47,15 @@
       height: 100%;
       max-width: 240px;
       text-transform: uppercase;
+      background-color: transparent !important;
+      box-shadow: none !important;
       &:hover {
         border-bottom: none;
+        color: rgba(255, 255, 255, 0.9);
+        span,
+        .mat-icon {
+          color: rgba(255, 255, 255, 0.9) !important;
+        }
       }
       &:focus {
         border-bottom: none;
@@ -56,6 +68,8 @@
         align-items: center;
         mat-icon {
           margin: auto;
+          color: rgba(255, 255, 255, 0.65);
+          @include transition(color 500ms ease-in-out);
         }
         span {
           height: 18px;
@@ -63,19 +77,21 @@
           max-height: 36px;
           padding: 0 0 20px 0;
           margin: auto;
-          font-size: 18px;
+          font-size: 15px;
+          letter-spacing: 0.8px;
+          color: rgba(255, 255, 255, 0.65);
           font-weight: 400;
           line-height: 18px;
           white-space: normal;
+          @include transition(color 500ms ease-in-out);
         }
       }
       &.mat-raised-button.mat-primary {
         .mat-ripple-element {
-          opacity: 0.3;
+          opacity: 0;
           background-color: rgba(255, 255, 255, 0.3);
         }
       }
     }
   }
 }
-

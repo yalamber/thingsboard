@@ -29,3 +29,13 @@ $mat-gt-xmd: "screen and (min-width: 1600px)";
 $mat-gt-xl: "screen and (min-width: 1920px)";
 
 $primary-hue-3: rgb(207, 216, 220) !default;
+
+@mixin transition($x...) {
+  transition: $x;
+  -webkit-transition: $x;
+  -moz-transition: $x;
+  -ms-transition: $x;
+  -o-transition: $x;
+}
+
+$tb-secondary-dark-color: #141414;

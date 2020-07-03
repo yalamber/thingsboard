@@ -23,7 +23,8 @@
 
   .mat-content {
     overflow: hidden;
-    background-color: #fff;
+    background-color: #141414;
+    color: rgba(255, 255, 255, 0.65);
   }
 
   .mat-padding {
@@ -35,26 +36,26 @@
     margin-right: 5px;
   }
 
-  tb-timeinterval[ng-reflect-fx-show="true"] {
+  tb-timeinterval[ng-reflect-fx-show='true'] {
     margin-bottom: -16px;
   }
 
   .limit-slider-container {
-    >:first-child {
+    > :first-child {
       margin-right: 16px;
     }
-    >:last-child {
+    > :last-child {
       margin-left: 16px;
     }
-    >:first-child, >:last-child {
+    > :first-child,
+    > :last-child {
       min-width: 25px;
       max-width: 42px;
     }
-    mat-form-field input[type=number] {
+    mat-form-field input[type='number'] {
       text-align: center;
     }
   }
-
 }
 
 :host ::ng-deep {

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@import '../../../../../scss/constants';
+@import "../../../../../scss/constants";
 
 :host {
   width: 100%;
@@ -22,13 +22,13 @@
     .tb-entity-table-content {
       width: 100%;
       height: 100%;
-      background: #fff;
+      background: $tb-secondary-dark-color;
 
-      .mat-toolbar-tools{
+      .mat-toolbar-tools {
         min-height: auto;
       }
 
-      .title-container{
+      .title-container {
         overflow: hidden;
       }
 
@@ -43,7 +43,7 @@
         overflow: auto;
       }
 
-      .tb-entity-table-info{
+      .tb-entity-table-info {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -56,7 +56,7 @@
       height: auto;
       min-height: 100px;
 
-      .tb-entity-table-title{
+      .tb-entity-table-title {
         padding-bottom: 5px;
         width: 100%;
       }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@import '../../../../../scss/constants';
+@import "../../../../../scss/constants";
 
 :host {
   display: flex;
@@ -21,22 +21,22 @@
   .tb-login-content {
     margin-top: 36px;
     margin-bottom: 76px;
-    background-color: rgb(250, 250, 250);
+    background-color: #000;
     .tb-login-form {
       @media #{$mat-gt-xs} {
-        width: 550px !important;
+        width: 370px !important;
       }
 
-      .tb-reset-password{
+      .tb-reset-password {
         padding: 0 6px;
       }
 
-      .tb-action-button{
+      .tb-action-button {
         padding: 20px 0 16px;
       }
     }
 
-    .oauth-container{
+    .oauth-container {
       padding: 0;
 
       .container-divider {
@@ -50,7 +50,7 @@
           flex: 1;
         }
 
-        .mat-divider-horizontal{
+        .mat-divider-horizontal {
           position: relative;
         }
 
@@ -60,7 +60,7 @@
         }
       }
 
-      .material-icons{
+      .material-icons {
         width: 20px;
         min-width: 20px;
       }
@@ -80,4 +80,3 @@
     }
   }
 }
-

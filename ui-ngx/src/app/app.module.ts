@@ -23,39 +23,34 @@ import { CoreModule } from '@core/core.module';
 import { LoginModule } from '@modules/login/login.module';
 import { HomeModule } from '@home/home.module';
 
+import { RegisterModule } from '@modules/register/register.module';
+
 import { AppComponent } from './app.component';
 import { DashboardRoutingModule } from '@modules/dashboard/dashboard-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [
-  { path: '**',
-    redirectTo: 'home'
-  }
-];
+const routes: Routes = [{ path: '**', redirectTo: 'home' }];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class PageNotFoundRoutingModule { }
-
+export class PageNotFoundRoutingModule {}
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     CoreModule,
     LoginModule,
+    RegisterModule,
     HomeModule,
     DashboardRoutingModule,
-    PageNotFoundRoutingModule
+    PageNotFoundRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

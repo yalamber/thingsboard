@@ -1,0 +1,98 @@
+<section class="register-section">
+  <div class="register-section__left">
+    <img src="./../../../assets/griot_logo_rev2.svg" alt="" />
+  </div>
+  <div class="register-section__right">
+    <div class="register-section__right__inner">
+      <h3>
+        Welcome to the Griot<br />
+        connectivity platform
+      </h3>
+      <p>Please create your account below</p>
+      <form class="tb-signup-form" [formGroup]="signupFormGroup" (ngSubmit)="signup()">
+        <div class="form-block">
+          <mat-grid-list [cols]="breakpoint" rowHeight="70px" gutterSize="40px" (window:resize)="onResize($event)">
+            <mat-grid-tile>
+              <mat-form-field appearance="legacy" style="width: 100%;">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName" placeholder="First Name" />
+                <mat-error *ngIf="submitted && f.firstName.errors">
+                  <div *ngIf="f.firstName.errors.required">Last Name is required</div>
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <mat-form-field appearance="legacy" style="width: 100%;">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName" placeholder="Last Name" />
+                <mat-error *ngIf="submitted && f.lastName.errors">
+                  <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
+        <div class="form-block">
+          <mat-form-field appearance="legacy" style="width: 100%;">
+            <mat-label>Email Address</mat-label>
+            <input matInput type="email" formControlName="email" placeholder="Email Address" />
+            <mat-error *ngIf="submitted && f.email.errors">
+              <div *ngIf="f.email.errors.required">Email is required</div>
+              <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-block">
+          <mat-form-field appearance="legacy" style="width: 100%;">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" placeholder="Password" />
+            <mat-error *ngIf="submitted && f.password.errors">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+              <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-block">
+          <mat-form-field appearance="legacy" style="width: 100%;">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" formControlName="confirmPassword" placeholder="Confirm Password" />
+            <mat-error *ngIf="submitted && f.confirmPassword.errors">
+              <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+              <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayout="column" class="mt">
+          <mat-progress-bar
+            color="warn"
+            mode="indeterminate"
+            *ngIf="isRegistering"
+          >
+          </mat-progress-bar>
+          <mat-error *ngIf="submitError">
+            {{submitError}}
+          </mat-error>
+          <div *ngIf="submitSuccess">
+            Successfully registered <a href="/">click here</a> to login
+          </div>
+          <mat-grid-list [cols]="breakpoint" rowHeight="70px" gutterSize="20px" (window:resize)="onResize($event)">
+            <mat-grid-tile>
+              <button mat-raised-button class="btn-register" type="submit">
+                SIGN UP
+              </button>
+            </mat-grid-tile>
+            <mat-grid-tile class="have-account-link">
+              <a href="/">Already have an account?</a>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
+      </form>
+      <div fxLayout="column" class="mt">
+        <p>
+          By signing up, I am accepting
+          <a href="#"><strong>Terms and Privacy Policy</strong></a> of Griot
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

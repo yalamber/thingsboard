@@ -196,8 +196,5 @@
       }
     }
   },
-  "defaultProject": "thingsboard",
-  "cli": {
-    "analytics": "78bd122f-44e2-4e05-b1c0-add56ae544a5"
-  }
+  "defaultProject": "thingsboard"
 }

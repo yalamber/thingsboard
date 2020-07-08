@@ -727,7 +727,7 @@
                             <exclude>ui/**</exclude>
                             <exclude>src/browserslist</exclude>
                             <exclude>**/*.raw</exclude>
-                            <exclude>src/app/_helepers/**</exclude>
+                            <exclude>src/app/_helpers/**</exclude>
                             <exclude>src/app/modules/register/**</exclude>
                         </excludes>
                         <mapping>

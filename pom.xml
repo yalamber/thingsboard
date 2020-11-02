@@ -697,6 +697,7 @@
                             <owner>The Thingsboard Authors</owner>
                         </properties>
                         <excludes>
+                            <exclude>.github/**</exclude>
                             <exclude>**/.env</exclude>
                             <exclude>**/*.env</exclude>
                             <exclude>**/.eslintrc</exclude>
